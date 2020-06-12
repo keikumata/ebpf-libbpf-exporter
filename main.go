@@ -12,5 +12,10 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(spec)
+	coll, err := ebpf.NewCollection(spec)
+	if err != nil {
+		panic(err)
+	}
+	defer coll.Close()
+	fmt.Println(coll.Programs)
 }
